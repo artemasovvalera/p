@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Я Сам! — Инвестиционная презентация</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #16161f;
+    --accent: #e8c547;
+    --accent2: #f0a500;
+    --text: #f0ede6;
+    --muted: #7a7a8a;
+    --border: rgba(232,197,71,0.15);
+    --card: rgba(255,255,255,0.04);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Golos Text', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+
+  /* HERO */
+  .hero-wrap {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding-top: 80px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,197,71,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(240,165,0,0.05) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--accent) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; max-width: 860px;
+    animation: fadeUp 1s ease both;
+  }
+  .hero-tag {
+    display: inline-block;
+    border: 0.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px; border-radius: 20px;
+    margin-bottom: 32px;
+  }
+  .hero-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 900; line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+  .hero-title span { color: var(--accent); }
+  .hero-sub {
+    font-size: 20px; color: var(--muted); line-height: 1.6;
+    max-width: 600px; margin: 24px auto 48px;
+    font-weight: 400;
+  }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #0a0a0f;
+    font-family: 'Golos Text', sans-serif;
+    font-size: 14px; font-weight: 600;
+    padding: 14px 32px; border-radius: 6px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--accent2); }
+  .btn-secondary {
+    background: transparent; color: var(--text);
+    font-family: 'Golos Text', sans-serif;
+    font-size: 14px; font-weight: 500;
+    padding: 14px 32px; border-radius: 6px;
+    text-decoration: none; border: 0.5px solid rgba(255,255,255,0.2); cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: rgba(232,197,71,0.05); }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+    border: 0.5px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin-top: 80px;
+  }
+  .stat-item {
+    background: var(--bg2); padding: 32px 24px; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 36px; font-weight: 700; color: var(--accent);
+    display: block; line-height: 1;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  /* SECTION LABEL */
+  .s-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px; display: block;
+  }
+  .s-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.03em; margin-bottom: 20px;
+  }
+  .s-desc { font-size: 17px; color: var(--muted); max-width: 600px; line-height: 1.7; }
+
+  /* PROBLEM / SOLUTION */
+  .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 60px; }
+  .ps-card {
+    padding: 48px 40px; background: var(--bg2);
+    border: 0.5px solid var(--border);
+  }
+  .ps-card:first-child { border-radius: 12px 0 0 12px; }
+  .ps-card:last-child { border-radius: 0 12px 12px 0; background: var(--bg3); border-color: var(--accent); }
+  .ps-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+  .ps-card h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 16px; font-weight: 600; margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .ps-list { list-style: none; }
+  .ps-list li {
+    padding: 10px 0; border-bottom: 0.5px solid var(--border);
+    font-size: 15px; color: var(--muted);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .ps-list li:last-child { border-bottom: none; }
+  .ps-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+
+  /* PRODUCT */
+  .product-img-wrap {
+    width: 100%; margin: 48px 0;
+    border-radius: 12px; border: 0.5px solid var(--border);
+    background: var(--bg3); overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    max-height: 480px;
+  }
+  .product-img {
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: center;
+    display: block; max-height: 480px;
+  }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .feat-card {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: 32px 28px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .feat-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .feat-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+  .feat-card h4 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 14px; font-weight: 600; margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .feat-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .feat-quote {
+    font-style: italic; color: var(--accent);
+    font-size: 13px; margin-top: 12px;
+    border-left: 2px solid var(--accent);
+    padding-left: 12px; line-height: 1.5;
+  }
+
+  /* MARKET */
+  .market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .market-card {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: 36px 28px;
+    position: relative; overflow: hidden;
+  }
+  .market-card::before {
+    content: attr(data-label);
+    position: absolute; top: 20px; right: 20px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+  .market-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 38px; font-weight: 900; color: var(--accent);
+    line-height: 1; margin: 16px 0 8px;
+  }
+  .market-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .market-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* BIZMODEL */
+  .biz-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+  .biz-card {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: 32px 28px;
+  }
+  .biz-tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(232,197,71,0.12); color: var(--accent);
+    padding: 4px 10px; border-radius: 4px; margin-bottom: 16px;
+  }
+  .biz-card h4 { font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+  .biz-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .biz-price {
+    margin-top: 16px; font-size: 22px; font-weight: 700;
+    font-family: 'Unbounded', sans-serif; color: var(--accent);
+  }
+  .biz-price span { font-size: 13px; font-weight: 400; color: var(--muted); }
+
+  /* SCALE */
+  .scale-wrap { margin-top: 60px; }
+  .scale-step {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 32px; align-items: start;
+    padding: 32px 0; border-top: 0.5px solid var(--border);
+  }
+  .scale-step:last-child { border-bottom: 0.5px solid var(--border); }
+  .scale-year {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 28px; font-weight: 900; color: var(--accent); line-height: 1;
+  }
+  .scale-step h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .scale-step p { font-size: 14px; color: var(--muted); }
+  .scale-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .pill {
+    font-size: 12px; padding: 4px 12px; border-radius: 20px;
+    border: 0.5px solid var(--border); color: var(--muted);
+  }
+
+  /* COMPETITORS */
+  .comp-table-wrap {
+    margin-top: 48px; overflow-x: auto;
+    border: 0.5px solid var(--border); border-radius: 12px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    padding: 16px 20px; text-align: left;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted);
+    border-bottom: 0.5px solid var(--border);
+    background: var(--bg2);
+  }
+  thead th:first-child { color: var(--text); }
+  thead th.highlight { color: var(--accent); }
+  tbody tr { border-bottom: 0.5px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 14px 20px; font-size: 14px;
+    background: var(--bg);
+  }
+  tbody tr:nth-child(even) td { background: var(--bg2); }
+  .col-hl td { background: rgba(232,197,71,0.04) !important; }
+  .yes { color: #5de48a; font-weight: 600; }
+  .no { color: var(--muted); }
+  .part { color: #e8c547; }
+
+  /* TEAM */
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+  .team-lead {
+    background: var(--bg2); border: 0.5px solid var(--accent);
+    border-radius: 12px; padding: 40px 36px;
+    display: grid; grid-template-columns: 100px 1fr; gap: 28px; align-items: start;
+  }
+  .team-photo {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--bg3); border: 2px solid var(--accent);
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+    font-family: 'Unbounded', sans-serif; font-size: 28px; font-weight: 700; color: var(--accent);
+  }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .team-name { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .team-role { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+  .team-bio { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .team-rest {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: 40px 36px;
+  }
+  .team-rest h4 { font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 20px; }
+  .team-member { padding: 12px 0; border-bottom: 0.5px solid var(--border); }
+  .team-member:last-child { border-bottom: none; }
+  .team-member strong { font-size: 14px; font-weight: 600; }
+  .team-member span { font-size: 13px; color: var(--muted); margin-left: 8px; }
+
+  /* INVEST */
+  .invest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 60px; align-items: start; }
+  .invest-ask {
+    background: var(--bg2); border: 0.5px solid var(--accent);
+    border-radius: 12px; padding: 40px;
+  }
+  .invest-amount {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 42px; font-weight: 900; color: var(--accent); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .invest-range { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+  .invest-list { list-style: none; }
+  .invest-list li {
+    padding: 12px 0; border-bottom: 0.5px solid var(--border);
+    font-size: 15px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .invest-list li:last-child { border-bottom: none; }
+  .invest-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .roi-card {
+    background: var(--bg3); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: 32px;
+    margin-bottom: 24px;
+  }
+  .roi-card h4 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .roi-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 0.5px solid var(--border); font-size: 14px; }
+  .roi-row:last-child { border-bottom: none; }
+  .roi-row strong { color: var(--accent); }
+
+  /* CONTACT */
+  .contact-wrap {
+    text-align: center; max-width: 600px; margin: 0 auto;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 14px 24px;
+    text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: rgba(232,197,71,0.05); }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 32px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--muted);
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+
+    section { padding: 60px 20px; }
+
+    .hero-wrap { padding-top: 60px; min-height: auto; padding-bottom: 40px; }
+    .hero-wrap > div { padding: 0 20px !important; }
+    .hero-title { font-size: 52px; }
+    .hero-sub { font-size: 16px; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .hero-btns a { width: 100%; text-align: center; }
+
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-num { font-size: 26px; }
+
+    .s-title { font-size: 26px; }
+
+    .ps-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ps-card:first-child { border-radius: 12px; }
+    .ps-card:last-child { border-radius: 12px; }
+
+    .features-grid { grid-template-columns: 1fr; gap: 16px; }
+    .feat-card { padding: 24px 20px; }
+
+    .product-img-wrap { margin: 28px 0; max-height: 320px; }
+    .product-img { max-height: 320px; }
+
+    .market-grid { grid-template-columns: 1fr; gap: 16px; }
+    .market-num { font-size: 28px; }
+
+    .biz-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    .scale-step { grid-template-columns: 60px 1fr; gap: 16px; }
+    .scale-year { font-size: 20px; }
+    .scale-pills { gap: 6px; }
+    .pill { font-size: 11px; padding: 3px 10px; }
+
+    .comp-table-wrap { font-size: 12px; }
+    thead th, tbody td { padding: 10px 12px; font-size: 12px; }
+
+    .team-grid { grid-template-columns: 1fr; gap: 16px; }
+    .team-lead { grid-template-columns: 1fr; gap: 20px; padding: 28px 24px; }
+    .team-rest { padding: 28px 24px; }
+
+    .invest-grid { grid-template-columns: 1fr; gap: 24px; }
+    .invest-ask { padding: 28px 24px; }
+    .invest-amount { font-size: 30px; }
+
+    .contact-links { flex-direction: column; align-items: center; }
+    .contact-link { width: 100%; justify-content: center; }
+
+    footer {
+      flex-direction: column; gap: 10px;
+      text-align: center; padding: 24px 20px;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .hero-title { font-size: 40px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stat-item { padding: 20px 12px; }
+    .stat-num { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Я Сам!</div>
+  <div class="nav-links">
+    <a href="#product">Продукт</a>
+    <a href="#market">Рынок</a>
+    <a href="#bizmodel">Модель</a>
+    <a href="#scale">Масштаб</a>
+    <a href="#invest">Инвесторам</a>
+    <a href="#contact">Контакт</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div style="max-width:1200px; width:100%; padding: 0 48px;">
+    <div class="hero-content">
+      <div class="hero-tag">Стартап · Россия · 2025</div>
+      <h1 class="hero-title">Я<span> Сам!</span></h1>
+      <p class="hero-sub">Платформа пешеходных аудиогидов нового поколения. Мы превращаем обычную прогулку в живое путешествие по истории родного города — через авторские маршруты, рассказы о местных героях и скрытых местах, озвученные знаменитыми голосами региона. Люди узнают свой город, начинают им гордиться и возвращаются снова. Бесплатно. Для всех. По всей России.</p>
+      <div class="hero-btns">
+        <a href="#invest" class="btn-primary">Инвесторам →</a>
+        <a href="#product" class="btn-secondary">О продукте</a>
+      </div>
+    </div>
+
+    <div class="stats-row fade-in">
+      <div class="stat-item">
+        <span class="stat-num">40+</span>
+        <div class="stat-label">готовых маршрутов</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5</span>
+        <div class="stat-label">платформ</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <div class="stat-label">месяца тестирования</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">∞</span>
+        <div class="stat-label">городов для масштаба</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM / SOLUTION -->
+<section id="problem" class="fade-in">
+  <span class="s-label">01 / Проблема и решение</span>
+  <h2 class="s-title">Города полны историй.<br>Их никто не рассказывает.</h2>
+
+  <div class="ps-grid">
+    <div class="ps-card">
+      <span class="ps-icon">🔍</span>
+      <h3>Проблема</h3>
+      <ul class="ps-list">
+        <li>Люди годами живут в городе и не знают его истории</li>
+        <li>Туристические гиды дорогие, неудобные, устаревшие</li>
+        <li>Культурное наследие малых городов остаётся невидимым</li>
+        <li>Молодёжь не чувствует связи с родным краем</li>
+        <li>Нет простого способа узнавать о местных героях и местах</li>
+      </ul>
+    </div>
+    <div class="ps-card">
+      <span class="ps-icon">✦</span>
+      <h3>Решение — «Я Сам!»</h3>
+      <ul class="ps-list">
+        <li>Готовые пешеходные маршруты с профессиональным аудиосопровождением</li>
+        <li>Истории о людях, событиях и местах — в живом формате</li>
+        <li>Работает на Android, iOS и в браузере — бесплатно</li>
+        <li>Контент создаётся местными авторами и озвучивается знаменитостями региона</li>
+        <li>Масштабируется на любой город России</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product" class="fade-in">
+  <span class="s-label">02 / Продукт</span>
+  <h2 class="s-title">Больше чем аудиогид.</h2>
+  <p class="s-desc">«Я Сам!» — это культурная платформа, которая превращает прогулку в путешествие во времени.</p>
+
+  <div class="product-img-wrap">
+    <img src="1.jpg" alt="Интерфейс приложения Я Сам!" class="product-img" onerror="this.style.opacity='0'">
+  </div>
+
+  <div class="features-grid">
+    <div class="feat-card">
+      <span class="feat-icon">🗺</span>
+      <h4>Живые маршруты</h4>
+      <p>40+ готовых пешеходных маршрутов по Кемерово — от центральных улиц до скрытых дворов. Маршрут ведёт сам, шаг за шагом.</p>
+      <div class="feat-quote">«Я жил здесь 30 лет и не знал этой истории»</div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🎧</span>
+      <h4>Аудиорассказы</h4>
+      <p>Оригинальный авторский контент — легенды, биографии, события. Озвучка известными голосами региона создаёт особую атмосферу.</p>
+      <div class="feat-quote">«Слушаешь — и город оживает вокруг»</div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🏛</span>
+      <h4>История и гордость</h4>
+      <p>Местные герои, забытые события, неизвестные факты. Люди узнают тех, кто строил их город — и начинают им гордиться.</p>
+      <div class="feat-quote">«Это воспитывает любовь к Родине через интерес»</div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📍</span>
+      <h4>Скрытые места</h4>
+      <p>Не только памятники — дворы, старые дома, природные объекты, которые знают только местные. Новый взгляд на привычное.</p>
+      <div class="feat-quote">«Открываешь свой город как турист»</div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📱</span>
+      <h4>Кроссплатформенность</h4>
+      <p>Android, iOS, Web, RuStore, Telegram. Нативные приложения для каждой платформы. Права на весь контент задепонированы.</p>
+      <div class="feat-quote">«Открыл браузер — и пошёл»</div>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🆓</span>
+      <h4>Бесплатно для людей</h4>
+      <p>Базовый доступ — полностью бесплатный. Монетизация через B2B и партнёрства, а не за счёт пользователей.</p>
+      <div class="feat-quote">«Культура должна быть доступна каждому»</div>
+    </div>
+  </div>
+
+  <div class="product-img-wrap" style="margin-top:32px">
+    <img src="2.jpg" alt="Скриншоты маршрутов" class="product-img" onerror="this.style.opacity='0'">
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market" class="fade-in">
+  <span class="s-label">03 / Рынок</span>
+  <h2 class="s-title">Большой рынок.<br>Слабые игроки.</h2>
+  <p class="s-desc">Внутренний туризм в России вырос на 34% за 3 года. Локальный контент и краеведение — один из самых быстрорастущих сегментов.</p>
+
+  <div class="market-grid">
+    <div class="market-card" data-label="TAM">
+      <div class="market-num">$6,4B</div>
+      <h4>Глобальный рынок</h4>
+      <p>Аудиогиды и туристические мобильные приложения. Рост 12% ежегодно.</p>
+    </div>
+    <div class="market-card" data-label="SAM">
+      <div class="market-num">18 млрд ₽</div>
+      <h4>Россия и СНГ</h4>
+      <p>Рынок мобильного туризма и краеведческих сервисов в русскоязычном сегменте.</p>
+    </div>
+    <div class="market-card" data-label="SOM">
+      <div class="market-num">2,4 млрд ₽</div>
+      <h4>Сибирь и Урал</h4>
+      <p>Целевой сегмент первых трёх лет — 15+ городов с населением от 100 000 человек.</p>
+    </div>
+  </div>
+
+  <div class="product-img-wrap">
+    <img src="3.jpg" alt="Карта масштабирования" class="product-img" onerror="this.style.opacity='0'">
+  </div>
+</section>
+
+<!-- BIZ MODEL -->
+<section id="bizmodel" class="fade-in">
+  <span class="s-label">04 / Бизнес-модель</span>
+  <h2 class="s-title">Четыре потока дохода.</h2>
+  <p class="s-desc">Устойчивая модель без зависимости от одного источника.</p>
+
+  <div class="biz-grid">
+    <div class="biz-card">
+      <div class="biz-tag">B2C</div>
+      <h4>Freemium подписка</h4>
+      <p>Базовые маршруты бесплатно. Премиум-контент, эксклюзивные голоса знаменитостей, расширенные маршруты — по подписке.</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-tag">B2B</div>
+      <h4>Муниципалитеты и регионы</h4>
+      <p>Лицензия на платформу для города или региона. Инструмент продвижения туризма, патриотического воспитания и работы со школами.</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-tag">B2B</div>
+      <h4>Партнёрские точки</h4>
+      <p>Кафе, музеи, галереи, отели — интеграция в маршруты. Дополнительный трафик от пользователей приложения.</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-tag">Франшиза</div>
+      <h4>Города-партнёры</h4>
+      <p>Готовая технология и платформа — партнёр наполняет контентом свой город. Паушальный взнос плюс роялти с выручки. Масштабируется без прямых затрат.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCALE -->
+<section id="scale" class="fade-in">
+  <span class="s-label">05 / Масштабирование</span>
+  <h2 class="s-title">От Кемерово<br>до всей страны.</h2>
+
+  <div class="scale-wrap">
+    <div class="scale-step">
+      <div class="scale-year">2026</div>
+      <div>
+        <h4>Кемерово — запуск</h4>
+        <p>Полноценная версия приложения. 50+ маршрутов. Профессиональная озвучка. Первые B2B-партнёры в городе.</p>
+        <div class="scale-pills">
+          <span class="pill">Кемерово</span>
+          <span class="pill">B2B-контракты</span>
+          <span class="pill">Выход на самоокупаемость</span>
+        </div>
+      </div>
+    </div>
+    <div class="scale-step">
+      <div class="scale-year">2027</div>
+      <div>
+        <h4>Кузбасс — первая франшиза</h4>
+        <p>Новокузнецк, Белово, Прокопьевск. Запуск механики франшизы. Контракт с Министерством туризма Кузбасса.</p>
+        <div class="scale-pills">
+          <span class="pill">3–5 городов</span>
+          <span class="pill">Франшиза запущена</span>
+        </div>
+      </div>
+    </div>
+    <div class="scale-step">
+      <div class="scale-year">2028</div>
+      <div>
+        <h4>Сибирь и Урал</h4>
+        <p>Новосибирск, Красноярск, Екатеринбург. Выход на региональные B2G-контракты. Федеральное медиаприсутствие.</p>
+        <div class="scale-pills">
+          <span class="pill">10–15 городов</span>
+          <span class="pill">B2G-контракты</span>
+        </div>
+      </div>
+    </div>
+    <div class="scale-step">
+      <div class="scale-year">2029+</div>
+      <div>
+        <h4>Вся Россия и СНГ</h4>
+        <p>Казахстан, Беларусь, другие русскоязычные рынки. Платформа становится стандартом городского аудиогида в стране.</p>
+        <div class="scale-pills">
+          <span class="pill">50+ городов</span>
+          <span class="pill">Россия и СНГ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITORS -->
+<section id="competitors" class="fade-in">
+  <span class="s-label">06 / Конкуренты</span>
+  <h2 class="s-title">Почему «Я Сам!» выигрывает.</h2>
+
+  <div class="comp-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Критерий</th>
+          <th class="highlight">Я Сам!</th>
+          <th>izi.TRAVEL</th>
+          <th>Аудиогид.рф</th>
+          <th>Google Maps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="col-hl">
+          <td>Бесплатно для пользователей</td>
+          <td class="yes">✓ Полностью</td>
+          <td class="part">Частично</td>
+          <td class="no">Нет</td>
+          <td class="yes">✓ Да</td>
+        </tr>
+        <tr>
+          <td>Локальный контент РФ</td>
+          <td class="yes">✓ Авторский</td>
+          <td class="part">Частично</td>
+          <td class="yes">✓ Да</td>
+          <td class="no">Нет</td>
+        </tr>
+        <tr class="col-hl">
+          <td>Голоса знаменитостей</td>
+          <td class="yes">✓ Да</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+        </tr>
+        <tr>
+          <td>Франшиза городов</td>
+          <td class="yes">✓ Да</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+        </tr>
+        <tr class="col-hl">
+          <td>B2G интеграция</td>
+          <td class="yes">✓ Да</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+        </tr>
+        <tr>
+          <td>Здоровье и долголетие</td>
+          <td class="yes">✓ Фокус</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+          <td class="no">Нет</td>
+        </tr>
+        <tr class="col-hl">
+          <td>Краеведение и патриотизм</td>
+          <td class="yes">✓ Ключевой фокус</td>
+          <td class="no">Нет</td>
+          <td class="part">Частично</td>
+          <td class="no">Нет</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="fade-in">
+  <span class="s-label">07 / Команда</span>
+  <h2 class="s-title">Энтузиасты, которые делают.</h2>
+  <p class="s-desc">Команда работает на энтузиазме и вере в проект. Весь MVP создан без внешнего финансирования.</p>
+
+  <div class="team-grid">
+    <div class="team-lead">
+      <div class="team-photo">
+        <img src="4.jpg" alt="Валерий Артемасов" onerror="this.parentElement.innerHTML='ВА'">
+      </div>
+      <div>
+        <div class="team-name">Валерий Артемасов</div>
+        <div class="team-role">Основатель и руководитель проекта</div>
+        <div class="team-bio">Юрист, доцент КузГТУ, разработчик платформы. Автор концепции, всех маршрутов и технической архитектуры проекта. Совмещает академическую деятельность с практическим предпринимательством.</div>
+      </div>
+    </div>
+    <div class="team-rest">
+      <h4>Команда проекта</h4>
+      <div class="team-member">
+        <strong>Юрисконсульт</strong>
+        <span>Правовая защита, договорная работа, интеллектуальная собственность</span>
+      </div>
+      <div class="team-member">
+        <strong>Авторы контента</strong>
+        <span>Разработка сценариев маршрутов, историческое исследование</span>
+      </div>
+      <div class="team-member">
+        <strong>Технические консультанты</strong>
+        <span>Разработка и поддержка мобильных платформ</span>
+      </div>
+      <div class="team-member" style="padding-bottom:0; border-bottom:none;">
+        <strong style="color:var(--accent)">Ищем в команду →</strong>
+        <span>Продюсер контента · iOS-разработчик · Менеджер по B2B</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVEST -->
+<section id="invest" class="fade-in">
+  <span class="s-label">08 / Инвесторам</span>
+  <h2 class="s-title">Войдите на старте.</h2>
+  <p class="s-desc">MVP готов. Концепция проверена. Нужен партнёр для превращения прототипа в работающий бизнес.</p>
+
+  <div class="invest-grid">
+    <div class="invest-ask">
+      <div class="invest-amount">3–50 млн ₽</div>
+      <div class="invest-range">Диапазон инвестиций · условия обсуждаются</div>
+      <ul class="invest-list">
+        <li>Профессиональная озвучка 50+ маршрутов знаменитостями</li>
+        <li>Полноценный запуск Android и iOS приложений</li>
+        <li>Маркетинг и привлечение первых 10 000 пользователей</li>
+        <li>Первые B2B-переговоры с муниципалитетами Кузбасса</li>
+        <li>Команда на постоянной основе</li>
+      </ul>
+    </div>
+    <div>
+      <div class="roi-card">
+        <h4>Что предлагаем</h4>
+        <div class="roi-row"><span>Форма участия</span><strong>Доля или конв. займ</strong></div>
+        <div class="roi-row"><span>Готовность к встрече</span><strong>Лично или онлайн</strong></div>
+        <div class="roi-row"><span>Финансовая модель</span><strong>Готова на 5 лет</strong></div>
+      </div>
+      <a href="#contact" class="btn-primary" style="display:block; text-align:center; text-decoration:none;">Запросить презентацию →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-in">
+  <div class="contact-wrap">
+    <span class="s-label" style="display:block; text-align:center;">09 / Контакт</span>
+    <h2 class="s-title" style="text-align:center;">Давайте поговорим.</h2>
+    <p style="color:var(--muted); text-align:center; font-size:16px; margin-top:16px;">Если вы инвестор, муниципальный партнёр или хотите узнать больше — напишите напрямую. Готов к встрече в любом формате.</p>
+
+    <div class="contact-links">
+      <a href="mailto:memorial142@mail.ru" class="contact-link">
+        <span>✉</span> memorial142@mail.ru
+      </a>
+      <a href="https://t.me/Svyatoslavkaal" class="contact-link">
+        <span>✈</span> @Svyatoslavkaal
+      </a>
+    </div>
+
+    <div class="product-img-wrap" style="margin-top:48px">
+      <img src="5.jpg" alt="Я Сам! — команда и проект" class="product-img" onerror="this.style.opacity='0'">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="font-family:'Unbounded',sans-serif; font-size:14px; color:var(--accent); font-weight:700;">Я Сам!</div>
+  <div>© 2026 · Все права защищены · Контент задепонирован</div>
+  <div>Сибирь, с любовью ❤</div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => observer.observe(el));
+  }
+  setTimeout(() => { els.forEach(el => el.classList.add('visible')); }, 200);
+</script>
