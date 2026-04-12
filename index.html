@@ -377,76 +377,50 @@
   }
 
   /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
   .fade-in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: no-preference) {
-    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-  }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
-
     section { padding: 60px 20px; }
-
     .hero-wrap { padding-top: 60px; min-height: auto; padding-bottom: 40px; }
     .hero-wrap > div { padding: 0 20px !important; }
     .hero-title { font-size: 52px; }
     .hero-sub { font-size: 16px; }
     .hero-btns { flex-direction: column; align-items: center; }
     .hero-btns a { width: 100%; text-align: center; }
-
     .stats-row { grid-template-columns: repeat(2, 1fr); }
     .stat-num { font-size: 26px; }
-
     .s-title { font-size: 26px; }
-
     .ps-grid { grid-template-columns: 1fr; gap: 12px; }
     .ps-card:first-child { border-radius: 12px; }
     .ps-card:last-child { border-radius: 12px; }
-
     .features-grid { grid-template-columns: 1fr; gap: 16px; }
     .feat-card { padding: 24px 20px; }
-
     .product-img-wrap { margin: 28px 0; max-height: 320px; }
     .product-img { max-height: 320px; }
-
     .market-grid { grid-template-columns: 1fr; gap: 16px; }
     .market-num { font-size: 28px; }
-
     .biz-grid { grid-template-columns: 1fr; gap: 16px; }
-
     .scale-step { grid-template-columns: 60px 1fr; gap: 16px; }
     .scale-year { font-size: 20px; }
     .scale-pills { gap: 6px; }
     .pill { font-size: 11px; padding: 3px 10px; }
-
     .comp-table-wrap { font-size: 12px; }
     thead th, tbody td { padding: 10px 12px; font-size: 12px; }
-
     .team-grid { grid-template-columns: 1fr; gap: 16px; }
     .team-lead { grid-template-columns: 1fr; gap: 20px; padding: 28px 24px; }
     .team-rest { padding: 28px 24px; }
-
     .invest-grid { grid-template-columns: 1fr; gap: 24px; }
     .invest-ask { padding: 28px 24px; }
     .invest-amount { font-size: 30px; }
-
     .contact-links { flex-direction: column; align-items: center; }
     .contact-link { width: 100%; justify-content: center; }
-
-    footer {
-      flex-direction: column; gap: 10px;
-      text-align: center; padding: 24px 20px;
-      font-size: 12px;
-    }
+    footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; font-size: 12px; }
+    div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    div[style*="padding: 56px 48px"] { padding: 40px 20px !important; }
   }
-
   @media (max-width: 400px) {
     .hero-title { font-size: 40px; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -476,7 +450,7 @@
   <div class="hero-grid"></div>
   <div style="max-width:1200px; width:100%; padding: 0 48px;">
     <div class="hero-content">
-      <div class="hero-tag">Стартап · Россия · 2025</div>
+      <div class="hero-tag">🟢 Продукт живой · Доступен прямо сейчас</div>
       <h1 class="hero-title">Я<span> Сам!</span></h1>
       <p class="hero-sub">Платформа пешеходных аудиогидов нового поколения. Мы превращаем обычную прогулку в живое путешествие по истории родного города — через авторские маршруты, рассказы о местных героях и скрытых местах, озвученные знаменитыми голосами региона. Люди узнают свой город, начинают им гордиться и возвращаются снова. Бесплатно. Для всех. По всей России.</p>
       <div class="hero-btns">
@@ -506,7 +480,47 @@
   </div>
 </div>
 
-<!-- PROBLEM / SOLUTION -->
+<!-- LIVE BLOCK -->
+<div style="background: linear-gradient(135deg, rgba(232,197,71,0.07) 0%, rgba(232,197,71,0.02) 100%); border-top: 0.5px solid rgba(232,197,71,0.2); border-bottom: 0.5px solid rgba(232,197,71,0.2); padding: 56px 48px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:32px; flex-wrap:wrap;">
+      <span style="width:10px; height:10px; border-radius:50%; background:#5de48a; display:inline-block; box-shadow:0 0 8px #5de48a;"></span>
+      <span style="font-family:'Unbounded',sans-serif; font-size:13px; font-weight:600; color:#5de48a; letter-spacing:0.08em; text-transform:uppercase;">Продукт уже работает</span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;">
+
+      <div style="background:rgba(255,255,255,0.04); border:0.5px solid rgba(232,197,71,0.25); border-radius:14px; padding:28px 24px;">
+        <div style="font-size:28px; margin-bottom:14px;">📱</div>
+        <div style="font-family:'Unbounded',sans-serif; font-size:13px; font-weight:600; margin-bottom:8px;">RuStore — Android</div>
+        <div style="font-size:13px; color:#7a7a8a; line-height:1.5; margin-bottom:20px;">Приложение прошло модерацию и опубликовано в официальном российском магазине приложений.</div>
+        <a href="https://www.rustore.ru/catalog/app/com.yasam.app" target="_blank" style="display:inline-block; background:var(--accent); color:#0a0a0f; font-size:12px; font-weight:700; padding:10px 20px; border-radius:6px; text-decoration:none; letter-spacing:0.03em;">Открыть в RuStore →</a>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.04); border:0.5px solid rgba(232,197,71,0.25); border-radius:14px; padding:28px 24px;">
+        <div style="font-size:28px; margin-bottom:14px;">🍎</div>
+        <div style="font-family:'Unbounded',sans-serif; font-size:13px; font-weight:600; margin-bottom:8px;">iPhone — нативно</div>
+        <div style="font-size:13px; color:#7a7a8a; line-height:1.5; margin-bottom:20px;">Устанавливается на iPhone как полноценное приложение прямо с сайта — через Safari за 10 секунд.</div>
+        <a href="https://artemasovvalera.github.io/y_s/" target="_blank" style="display:inline-block; background:transparent; color:var(--accent); font-size:12px; font-weight:700; padding:10px 20px; border-radius:6px; text-decoration:none; border:0.5px solid var(--accent); letter-spacing:0.03em;">Открыть сайт →</a>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.04); border:0.5px solid rgba(232,197,71,0.25); border-radius:14px; padding:28px 24px;">
+        <div style="font-size:28px; margin-bottom:14px;">🌐</div>
+        <div style="font-family:'Unbounded',sans-serif; font-size:13px; font-weight:600; margin-bottom:8px;">Веб-версия</div>
+        <div style="font-size:13px; color:#7a7a8a; line-height:1.5; margin-bottom:20px;">Работает в любом браузере без установки. Доступна на любом устройстве прямо сейчас.</div>
+        <a href="https://artemasovvalera.github.io/y_s/" target="_blank" style="display:inline-block; background:transparent; color:var(--accent); font-size:12px; font-weight:700; padding:10px 20px; border-radius:6px; text-decoration:none; border:0.5px solid var(--accent); letter-spacing:0.03em;">Попробовать →</a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:28px; background:rgba(255,255,255,0.03); border:0.5px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start;">
+      <span style="font-size:20px; flex-shrink:0;">💡</span>
+      <div>
+        <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Текущий статус проекта</div>
+        <div style="font-size:13px; color:#7a7a8a; line-height:1.6;">Продукт прошёл тестирование и работает в живом режиме. Сейчас идёт техническая доработка, полировка дизайна и подготовка маркетинговой стратегии. Активного продвижения пока не было — проект развивался силами команды энтузиастов. Ищем партнёра или инвестора для полноценного запуска.</div>
+      </div>
+    </div>
+  </div>
+</div>
 <section id="problem" class="fade-in">
   <span class="s-label">01 / Проблема и решение</span>
   <h2 class="s-title">Города полны историй.<br>Их никто не рассказывает.</h2>
@@ -852,8 +866,8 @@
     <p style="color:var(--muted); text-align:center; font-size:16px; margin-top:16px;">Если вы инвестор, муниципальный партнёр или хотите узнать больше — напишите напрямую. Готов к встрече в любом формате.</p>
 
     <div class="contact-links">
-      <a href="mailto:memorial142@mail.ru" class="contact-link">
-        <span>✉</span> memorial142@mail.ru
+      <a href="/cdn-cgi/l/email-protection#b3ded6dedcc1dad2df828781f3ded2dadf9dc1c6" class="contact-link">
+        <span>✉</span> <span class="__cf_email__" data-cfemail="ea878f878598838b86dbded8aa878b8386c4989f">[email&#160;protected]</span>
       </a>
       <a href="https://t.me/Svyatoslavkaal" class="contact-link">
         <span>✈</span> @Svyatoslavkaal
@@ -872,13 +886,6 @@
   <div>Сибирь, с любовью ❤</div>
 </footer>
 
-<script>
-  const els = document.querySelectorAll('.fade-in');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-    els.forEach(el => observer.observe(el));
-  }
-  setTimeout(() => { els.forEach(el => el.classList.add('visible')); }, 200);
-</script>
+
+</body>
+</html>
