@@ -420,6 +420,8 @@
     footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; font-size: 12px; }
     div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
     div[style*="padding: 56px 48px"] { padding: 40px 20px !important; }
+    div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+div[style*="padding: 80px 48px"] { padding: 48px 20px !important; }
   }
   @media (max-width: 400px) {
     .hero-title { font-size: 40px; }
@@ -518,6 +520,43 @@
         <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Текущий статус проекта</div>
         <div style="font-size:13px; color:#7a7a8a; line-height:1.6;">Продукт прошёл тестирование и работает в живом режиме. Сейчас идёт техническая доработка, полировка дизайна и подготовка маркетинговой стратегии. Активного продвижения пока не было — проект развивался силами команды энтузиастов. Ищем партнёра или инвестора для полноценного запуска.</div>
       </div>
+    </div>
+  </div>
+</div>
+  <!-- VIDEO SECTION -->
+<div style="background: var(--bg2); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding: 80px 48px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <span style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:16px;">Смотреть презентацию</span>
+      <h2 style="font-family:'Unbounded',sans-serif; font-size:clamp(24px,4vw,40px); font-weight:700; letter-spacing:-0.03em; line-height:1.1;">Проект в действии</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+      <div>
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Для инвесторов · Полная версия</div>
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; border:0.5px solid var(--border);">
+          <iframe
+            src="https://www.youtube.com/embed/bn_RJ-lipZc?rel=0&modestbranding=1&color=white"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Для пользователей · Короткая версия</div>
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; border:0.5px solid var(--border);">
+          <iframe
+            src="https://www.youtube.com/embed/W0VHdM7AyQM?rel=0&modestbranding=1&color=white"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
